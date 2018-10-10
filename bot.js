@@ -343,11 +343,44 @@ client.on('message', message => {
 
 
 
-
-client.on('ready',async () => {
-client.channels.find(ch => ch.id === "499596958864769025" && ch.type === '1VoiceM').join();
+client.on('ready', () => {
+    client.channels.find(c => c.id === '499596958864769025').join();
 });
 
+
+});
+
+  client.on('message', message => {
+  if (!message.guild) return;
+
+  if (message.content === '1Play') {
+    if (message.member.voiceChannel) {
+      message.member.voiceChannel.join()
+        .then(connection => { 
+          message.reply('**لقد دخلت الروم بنجاح !**');
+        })
+        .catch(console.log);
+    } else {
+      message.reply('**يجب ان تكون في روم صوتي**');
+    }
+  }
+});
+
+client.on('message', message => {
+    if (message.content === '1Help') {
+        let helpEmbed = new Discord.RichEmbed()
+        .setTitle('**أوامر الميوزك...**')
+        .addField('**__Play__**', '**لتشغيل اغنية**')
+        .addField('**__Join__**', '**دخول رومك الصوتي**')
+        .addField('**__Disconnect__**', '**الخروج من رومك الصوتي**')
+        .addField('**__Skip__**', '**تخطي الأغنية**')
+        .addField('**__Pause__**', '**ايقاف الاغنية مؤقتا**')
+        .addField('**__Resume__**', '**تكملة الاغنية**')
+        .addField('**__Queue__**', '**اظهار قائمة التشغيل**')
+        .addField('**__Np__**', '**اظهار الاغنية اللي انت مشغلها حاليا**')
+      message.channel.send(helpEmbed);
+    }
+});
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
