@@ -292,7 +292,6 @@ function play(guild, song) {
 	const serverQueue = queue.get(guild.id);
 
 	if (!song) {
-		serverQueue.voiceChannel.leave();
 		queue.delete(guild.id);
 		return;
 	}
@@ -347,7 +346,7 @@ client.on('message', message => {
         .addField('**__Resume__**', '**تكملة الاغنية**')
         .addField('**__Queue__**', '**اظهار قائمة التشغيل**')
 	.addField('**__Np__**', '**اظهار الاغنية اللي انت مشغلها حاليا**')
-	.addField('**Vol**', '**لتغيير درجة الصوت 100 - 0**')
+	.addField('**__Vol__**', '**لتغيير درجة الصوت 100 - 0**')
       message.channel.send(helpEmbed);
     }
 });
@@ -355,7 +354,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
- if(message.content.startsWith(prefix + "1Join")) {
+ if(message.content.startsWith(prefix + "Join")) {
 message.member.voiceChannel.join();
 }
 });
