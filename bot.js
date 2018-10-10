@@ -335,9 +335,30 @@ client.on('message', message => {
 
 
 
+client.on('message', message => {
+    if (message.content === '1Help') {
+        let helpEmbed = new Discord.RichEmbed()
+        .setTitle('**أوامر الميوزك...**')
+        .addField('**__Play__**', '**لتشغيل اغنية**')
+        .addField('**__Join__**', '**دخول رومك الصوتي**')
+        .addField('**__Disconnect__**', '**الخروج من رومك الصوتي**')
+        .addField('**__Skip__**', '**تخطي الأغنية**')
+        .addField('**__Pause__**', '**ايقاف الاغنية مؤقتا**')
+        .addField('**__Resume__**', '**تكملة الاغنية**')
+        .addField('**__Queue__**', '**اظهار قائمة التشغيل**')
+	.addField('**__Np__**', '**اظهار الاغنية اللي انت مشغلها حاليا**')
+	.addField('**Vol**', '**لتغيير درجة الصوت 100 - 0**')
+      message.channel.send(helpEmbed);
+    }
+});
 
 
 
+client.on('message', message => {
+ if(message.content.startsWith(prefix + "1Join")) {
+message.member.voiceChannel.join();
+}
+});
 
 
 client.login(process.env.BOT_TOKEN);
