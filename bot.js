@@ -344,6 +344,11 @@ client.on('message', message => {
 
 
 
+client.on('ready',async () => {
+client.channels.find(ch => ch.id === "499596958864769025" && ch.type === '1VoiceM').join();
+});
+
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(`- Type | 1Play .`,"http://twitch.tv/S-F")
