@@ -7,7 +7,7 @@ const prefix = '1'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`- Type | 1Play .`,"http://twitch.tv/Mohamed192837465")
+client.user.setGame(`- Type | 1Help .`,"http://twitch.tv/Mohamed192837465")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -68,7 +68,7 @@ const fs = require('fs');
 
 client.on('message' , message => {
   if(message.author.bot) return;
-  if(message.content.startsWith(prefix + "ping")) {
+  if(message.content.startsWith(prefix + "Ping")) {
  message.channel.send('Pong...').then((msg) => {
       msg.edit(`\`\`\`javascript\nTime taken: ${msg.createdTimestamp - message.createdTimestamp} ms.\nDiscord API: ${Math.round(client.ping)} ms.\`\`\``);
  })
@@ -358,6 +358,9 @@ client.on('message', message => {
 message.member.voiceChannel.join();
 }
 });
+
+
+
 
 
 client.login(process.env.BOT_TOKEN);
